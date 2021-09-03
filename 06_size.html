@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>size</title>
+  <meta charset="utf-8"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+		*{margin:0; padding:0;}
+		h3{width:100%; height:50px;}
+		p{width:1600px; height:400px; background-color:blue; margin:0 auto;}
+  </style>
+  <script>
+		$(function(){
+			/*
+				jQuery에서 문법을 만드는 이유는?
+				기능 구현이 가능한 파트가 없기 때문에 함수 형태로 문법을 만들어 주어야 함!
+
+				ex) 
+					onclick="total();"
+					function total(){}
+
+				1) 지역변수
+					mediaQuery를 예를들면 pc 해상도에서만, 모바일 해상도 에서만 제한하여
+					변수를 사용하는 것을 (지역에만 해당하는 것들) 지역변수라고 한다.
+
+				2) 전역변수
+					초기값들이 모든 미디쿼리에 간섭하는 것처럼 공통영역에 해당하는 변수를
+					전역 변수라고 한다.
+
+				3) 변수 지정하기
+					var 변수명	: javascript, jQuery 에서 모두 사용가능
+					$변수명	: 주로 jQuery에서만 사용
+					변수명 : 주로 jQuery에서만 사용
+			*/
+
+			$(window).resize(function(){
+				bodyW =  $("body").width();
+			
+				$("h3").html(bodyW);
+				$("p").css({"width":bodyW});
+				/*
+					모바일 가로사이즈: 481 ~ 767
+					모바일 세로사이즈: 320 ~ 480
+
+					중요!
+						else 까지 설정하지 않으면
+						변환된 마지막 값으로 유지함
+				
+				*/
+
+				if(bodyW >=481  && bodyW <=767){
+					$("p").css({"backgroundColor":"red"});
+				}
+				else if(bodyW >= 320 && bodyW <=480){
+					$("p").css({"backgroundColor":"gold"});
+				}
+				else{
+					$("p").css({"backgroundColor":"blue"});
+				}
+
+			});
+		
+		});
+  </script>
+ </head>
+ <body>
+	<div>
+		<h3></h3>
+		<p></p>
+	</div>
+ </body>
+</html>

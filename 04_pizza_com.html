@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>pizza</title>
+  <meta charset="utf-8"/>
+  <style>
+		*{margin:0; padding:0;}
+		#wrap{width:600px; margin:30px; border:1px dashed #f30; border-bottom-right-radius:150px;
+		box-shadow:0 5px 10px rgba(0,0,0,0.2);}
+
+		h3{background-color:#f30; text-align:center; line-height:40px; color:#fff; letter-spacing:10px;}
+		.img{width:100%; text-align:center;}
+		.img img{width:90%;}
+
+		#priceArea{padding:30px;}
+		#priceArea p{margin:10px 0; overflow:hidden;}
+		label{display:block; width:100px; font-size:14px; float:left;}
+		label, input, select{height:30px; line-height:30px;}
+
+		#price{border:none; font-size:20px; width:100px; text-align:right;}
+		#num{width:123px;}
+
+		#result{width:150px; font-size:20px; border:none; text-align:right;}
+		input[type="button"]{padding:0 10px;}
+  </style>
+  <script>
+		function total(){
+			// alert();
+			/*
+				[1] 총 합계 구하기
+					
+					예) total	= num * 2
+					
+					총결과 = 판매가 * 수량
+					input.value		input.value	 * input.value
+			
+					+ input의 내용은 value에 입력되거나 출력됨
+					+ result.value	= price.value		* num.value
+
+				[2] "태그에 접근" 해야 하기 때문에 id 객체로 만들기
+					
+					+ 판매가에 해당하는 id
+					+ 수량에 해당하는 id
+					+ 결과에 해당하는 id
+			*/
+
+			var price = document.getElementById("price");
+			console.log(price);
+
+			var num = document.getElementById("num");
+			var result = document.getElementById("result");
+
+
+			/*
+				[3] 계산이 되기전에 해야 할 일
+					+ 제품이 아닌 것을 선택하면 제품 선택하세요, 알림창 띄우기
+					+ 수량이 빈칸과 같을 경우, 수량을 입력하세요. 알림창 띄우기
+
+				////////////////////////////////////////////////////////////////////////////////////////////
+				
+			*/
+
+			var menuSelect = document.getElementById("menuSelect");
+			console.log(menuSelect);
+
+			/*
+				문제1: menuSelect.value가 제품이 아닌 typeSelect  또는 divide
+				와 같다면 상품을 선택하세요, 알림창 띄우기
+
+				[매우중요]
+
+					select태그의 경우, select.value로 인식하는 값!
+					option은 읽어주지 않음, option.value 없음!
+
+					video태그의 경우, video.src로 인식가능!
+					source는 읽어주지 않음, source.src 없음!
+			*/
+			 // ver-1:  or || 또는 방식사용
+				
+			if(menuSelect.value =="typeSelect" || menuSelect.value=="divide"){
+					alert("상품을 선택하세요.");
+
+					return false;
+			}
+			
+			/*
+				ver-2 : else if 방식사용
+
+				if(menuSelect.value =="typeSelect"){ alert("상품을 선택하세요");}
+				else if(menuSelect.value=="divide"){ alert("아래의 제품을 선택하세요"); }
+				else{ alert("제품을 선택하였습니다.")}
+			*/
+
+			/*
+				문제2: 수량 부분이 빈칸과 같다면 수량을 입력하세요, 알림창 띄우기
+
+					+ 해당하는 input 공간이 비어있다면, 비어있다는 표현과 value값이
+					일치해야 수식이 적용됨!
+					
+					[중요]
+						비어있음:  ""		, content:""
+						공백표현:  " "	 
+			
+			*/
+
+			if(num.value==""){
+				alert("수량을 입력하세요.");
+			}
+			
+			/*
+				[문제점 발생]
+					if 사용시 문제점 발생, if 모두 주인공이기 때문에 모두 활성화되는 문제 발생
+						:: 알림창이 차례로 2번 활성화 됨
+
+				[중요]
+					else if: 또 다른 조건이 있다면, 비슷한 값들 중에서 나열할때 사용
+
+						if(id=="한글"){}
+						else if(id=="영문"){}
+						else if(id=="한문"){}
+	
+
+					if	: 원하는 값이 다른 경우엔 전부 if 사용
+							아이디 또는 비밀번호? 라는 개념이 없음
+
+							아이디 공간 if
+							비밀번호 공간 if 
+							이메일 공간 if 
+								: 위와 같이 사용함
+
+				[해결]
+					+ return false로 해결
+					+ break는 수식에서 빠져나오기 위해서 사용하는 값으로 강제로 뜨는 if를 막기 어려움!
+			
+			*/
+
+
+
+			// 총합계 구하기
+			result.value = price.value * num.value;
+
+			
+		}
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<h3>PIZZA</h3>
+		<p class="img">
+			<img src="img/pizza.gif" alt="이미지"/>
+		</p>
+		<div id="priceArea">
+			<p>
+				<label for="price">판매가</label><input id="price" type="text" value="28800" readonly/>원
+			</p>
+			<p>
+				<label for="menuSelect">상품</label>
+				<select id="menuSelect">
+					<option value="typeSelect">----- 피자선택 -----</option>
+					<option value="divide">=================</option>
+					<option value="콤비네이션피자">콤비네이션피자</option>
+					<option value="페페로니피자">페페로니피자</option>
+					<option value="하와이안피자">하와이안피자</option>
+					<option value="불고기피자">불고기피자</option>
+					<option value="포테이토피자">포테이토피자</option>
+					<option value="고구마피자">고구마피자</option>
+				</select>
+			</p>
+			<p>
+				<label for="num">갯수: </label><input id="num" type="number" min="1"/>
+				<!-- 마이너스 값이 나오지 않도록 최소값 만들기 -->
+			</p>
+			<p>
+				<input id="button" type="button" title="합계" value="합계" onclick="total();"/>
+				<!--
+					form에서 button 버튼 태그를 사용하여 깜박이는 증상이 있을 경우엔
+					input 태그를 활용하여 버튼으로 만들기
+				-->
+				<input id="result" type="text" title="총합계"  readonly/>원
+				<!-- 총 결제 금액 지워지지 않도록 readonly 작성 -->
+			</p>
+		</div>
+	</div>
+ </body>
+</html>

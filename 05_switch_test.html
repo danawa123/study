@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>switch_test</title>
+  <meta charset="utf-8"/>
+  <script>
+		/*
+			[응용문제1]
+				a나 A를 입력하면 apple  입니다. 문서에 출력받기
+				b나 B를 입력하면 banana 입니다. 문서에 출력받기
+				c나 C를 입력하면 coconut 입니다. 문서에 출력받기
+
+				해당하는 값이 없으면 해당하는 과일이 없습니다. 문서에 출력받기
+				: 해당하는 수식에서 빠져나오기
+		
+		*/
+		/*
+		var text = prompt("문자를 입력하세요","예) a, b, c  or A, B, C");
+
+		// 시작하는 값에서 부터 아래로 읽는 방법 이용하기
+	
+		switch(text){
+			case "a":	
+			case "A":	 document.write("apple 입니다."); break;
+
+			case "b":	 
+			case "B":	 document.write("banana 입니다."); break;
+
+			case "c":	
+			case "C":	 document.write("coconut 입니다."); break;
+
+			default: document.write("해당하는 과일이 없습니다."); break;
+		}
+		*/
+
+
+		/*
+			[응용문제2]
+				숫자 1을 입력하면 숫자 1입니다. 문서에 출력받기
+				숫자 2를 입력하면 숫자 2입니다. 문서에 출력받기
+				숫자 3을 입력하면 숫자 3입니다. 문서에 출력받기 
+				default 제외가능!
+
+				중요) 숫자와 비교하기 때문에 아래와 같이 표기하기
+
+				case "1"		:		문자 1일 경우
+				case 1			:		숫자 1일 경우
+
+				문제점 발견시 해결하는 방법
+					console.log , typeof 사용해서 확인하기
+			
+		*/
+		
+		var numb = prompt("숫자입력: ");
+		/*
+			[문제점]
+				숫자를 입력해도 나타나지 않음
+
+				if문에서는 가능함!
+					+ num == 1 바로 가능함
+					+ if문 겉에만 비슷해도 비교가능
+				
+				[switch의 문제점]
+					+ 재료의 속성까지 전부 확인함
+					+ 재료를 디테일하게 확인함
+		*/
+
+		
+
+		numb = parseInt(numb);
+
+		console.log(typeof(numb));
+		
+		switch(numb){
+			case 1:	 document.write("숫자 1입니다. "); break; 
+			case 2:	 document.write("숫자 2입니다. "); break; 
+			case 3:  document.write("숫자 3입니다. "); break; 
+		}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

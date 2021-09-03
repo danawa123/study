@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>switch</title>
+  <meta charset="utf-8"/>
+  <script>
+		/*
+			[제어문]
+				
+				[if문 사용방법]
+					
+					1) 기본문법
+						if(){}
+						else{}
+
+					2) else if 추가
+
+						if(){}
+						else if(){}
+						else{}
+
+
+				[switch문 사용방법]
+					
+					switch( 재료(토마토) ){
+						
+						case "재료1"	: 케찹
+						case "재료2"	: 주스
+						case "재료3"  : 소스
+						case "재료4"  : 햄버거 재료
+						case "재료5"  : 카프레제!
+						case "재료6"  : 파스타
+						case "재료7"  : 샐러드
+					}
+
+					:: 재료를 통해서 여러가지 경우의 수를 확인할 수 있음
+					:: if문 보다는 간단하고 빠르게 제어가 가능함
+		*/
+
+		var text = "a";
+
+		switch(text){
+			case "a" : document.write("재료값은 a 입니다.<br/><br/>");
+		}
+
+		/*
+			[응용문제]
+				입력창에 a, b, c 각각 입력받기
+					재료가 a 일 경우, 문서에 입력받은 값은 a가 맞습니다. 출력받기
+					재료가 b 일 경우, 문서에 입력받은 값은 b가 맞습니다. 출력받기
+					재료가 c 일 경우, 문서에 입력받은 값은 c가 맞습니다. 출력받기
+		
+		*/
+
+		var str = prompt("문자 입력받기: ","예) a, b, c");
+		switch(str){
+			case "a" : document.write("입력받은 값은 a가 맞습니다."); break;
+			case "b" :	document.write("입력받은 값은 b가 맞습니다."); break;
+			case "c" :	document.write("입력받은 값은 c가 맞습니다."); break;
+			default: document.write("해당하는 값이 없습니다."); break;
+		}
+
+		/*
+			[switch의 특징]
+				+ 입력받은 값이 a라면 자신을 포함하여 아래쪽의 모든 값이 출력된다.
+
+				a를 입력하면, a, b, c 가 출력됨
+				b를 입력하면, b, c 가 출력됨
+				c를 입력하면, c만 출력됨
+
+				+ 해당하는 위치에서 부터 아래로만 출력, 위로는 출력되지 않음! (역방향X)
+
+				+ jQuery에서 a태그를 멈추기 위하여 , #none		||		return false 작성
+				+ return false의 경우 , 강제종료의 의미로 사용 (컴퓨터의 파워를 끄는 것과 같음)
+
+				+ switch문에서 return false를 사용하면 강제로 종료 되기 때문에 
+				수식자체가 활성화 되지 않음
+
+				[switch 활용하기]
+				
+				1) 재료값이 가장 중요함
+				2) case : 재료값이 정확하게 무엇인지 알기 어렵기 때문에 경우의 수를 
+				따지기 위하여 작성 (text 박스안에 어떤 값이 나타날지 알수 없음, z, x, p)
+
+				3) break는 해당하는 값이 끝나는 지점에 작성하기
+					: break는 수식안에서 빠져나올 수 있도록 만듬
+					: 끝나는 부분의 가장 마지막에도 break 설정하기
+						, 해당수식에서 빠져나오지 못하기 때문에 미로 공간에 머물게 됨
+						switch 문 안에 그대로 유지됨
+
+
+				정리) switch문 안에서만 break를 사용하는 것이 아님! 
+		*/
+
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

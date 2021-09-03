@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>input_if</title>
+  <meta charset="utf-8"/>
+  <script>
+
+		/* 작업순서: input의 value가 글쓰기 맞다면, 글쓰기가 맞습니다. 알림창 띄우기 */
+		function btn(){
+			// alert();
+			var text = document.getElementById("text");
+			console.log( text );
+
+			if(text.value =="글쓰기"){
+				alert("글쓰기가 맞습니다.");
+			}
+			else{
+				alert("글쓰기가 아닙니다.");
+			}
+		}
+
+  </script>
+ </head>
+ <body>
+	<h2>input태그와 if문 활용하기</h2>
+	<input id="text" type="text" value="글쓰기" title="글쓰기"/>
+
+	<button onclick="btn();">클릭</button>
+ </body>
+</html>
